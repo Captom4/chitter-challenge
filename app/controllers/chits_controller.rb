@@ -1,5 +1,6 @@
 class ChitsController < ApplicationController
   before_action :set_chit, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, except: [:index, :show]
 
   # GET /chits
   # GET /chits.json
@@ -25,7 +26,6 @@ class ChitsController < ApplicationController
   # POST /chits.json
   def create
     @chit = Chit.new(chit_params)
-
     respond_to do |format|
       if @chit.save
         format.html { redirect_to @chit, notice: 'Chit was successfully created.' }
@@ -69,6 +69,6 @@ class ChitsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def chit_params
-      params.require(:chit).permit(:title, :content)
+      params.require(:chit).permit(:title, :content).merge(user_id: current_user.id)
     end
 end

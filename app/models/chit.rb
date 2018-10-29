@@ -1,3 +1,6 @@
 class Chit < ApplicationRecord
-  belongs_to :user
+  validates :title, presence: true, length: {maximum: 140}
+  validates :content, presence: true
+  validates_presence_of :user_id
+  belongs_to :user, foreign_key: :user_id
 end

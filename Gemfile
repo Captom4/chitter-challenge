@@ -32,6 +32,8 @@ group :development do
   gem 'rails_layout'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'bootstrap_form'
+
 end
 
 group :test do
