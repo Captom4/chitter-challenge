@@ -4,6 +4,7 @@ module ApplicationHelper
   def bootstrap_alert(flash)
     ALERTS[flash.to_sym] || flash.to_s
   end
+
   private
 
   ALERTS = {
